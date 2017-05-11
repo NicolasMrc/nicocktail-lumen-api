@@ -16,12 +16,16 @@ class UserTableSeeder extends Seeder
             'lastname' => 'Admin',
             'email' => 'admin@nicolasmercier.io',
             'password' => '418d940643b1975d62234ee01246ad4b58904184',
+            'role' => 'admin',
+            'api_token' => str_random(32),
         ]);
         DB::table('user')->insert([
             'firstname' => 'Nicolas',
             'lastname' => 'Mercier',
             'email' => 'nyckoo@live.fr',
             'password' => '418d940643b1975d62234ee01246ad4b58904184',
+            'role' => 'user',
+            'api_token' => '',
         ]);
     }
 }

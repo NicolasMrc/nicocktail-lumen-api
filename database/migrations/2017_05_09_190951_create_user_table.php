@@ -21,6 +21,8 @@ class CreateUserTable extends Migration
             $table->string('lastname');
             $table->string('email');
             $table->string('password');
+            $table->string('role');
+            $table->string('api_token');
             $table->timestamps();
         });
     }

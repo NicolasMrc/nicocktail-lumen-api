@@ -18,6 +18,12 @@ use Illuminate\Http\Response;
 
 class UserController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth', ['only' => ['show', 'index', 'update', 'destroy', 'store']]);
+    }
+
     public function show($id)
     {
         $user = User::where('id', $id)->first();
@@ -66,6 +72,10 @@ class UserController extends Controller
         $user = User::where('email', $request->email)->first();
 
         if($user->password == $request->password){
+            $user->api_token = str_random(32);
+
+            $user->save();
+
             return new JsonResponse($user);
         } else {
             return new JsonResponse(null);

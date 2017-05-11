@@ -17,6 +17,12 @@ use Illuminate\Http\Response;
 
 class SoftController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth', ['only' => ['update', 'destroy', 'store']]);
+    }
+
     public function show($id)
     {
         $soft = Soft::where('id', $id)->first();

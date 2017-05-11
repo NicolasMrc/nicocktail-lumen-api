@@ -17,6 +17,13 @@ use Illuminate\Http\Response;
 
 class AlcoholController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth', ['only' => ['update', 'destroy', 'store']]);
+    }
+
+
     public function show($id)
     {
         $alcohol = Alcohol::where('id', $id)->first();

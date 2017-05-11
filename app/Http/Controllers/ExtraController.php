@@ -17,6 +17,12 @@ use Illuminate\Http\Response;
 
 class ExtraController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth', ['only' => ['update', 'destroy', 'store']]);
+    }
+
+
     public function show($id)
     {
         $extra = Extra::where('id', $id)->first();
