@@ -2,11 +2,10 @@
     <IfModule mod_negotiation.c>
         Options -MultiViews
     </IfModule>
-
     RewriteEngine On
 
-    RewriteCond %{HTTP:Authorization} ^(.*)
-    RewriteRule .* - [e=HTTP_AUTHORIZATION:%1]
+    RewriteCond %{HTTP:X-Forwarded-Proto} !https
+    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [NE,R=301,L]
 
     # Redirect Trailing Slashes If Not A Folder...
     RewriteCond %{REQUEST_FILENAME} !-d
@@ -18,6 +17,6 @@
     RewriteRule ^ index.php [L]
 
     # Handle Authorization Header
-    #RewriteCond %{HTTP:Authorization} .
-    #RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 </IfModule>
