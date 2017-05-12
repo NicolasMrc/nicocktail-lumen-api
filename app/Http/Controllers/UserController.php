@@ -71,7 +71,7 @@ class UserController extends Controller
     public function login(Request $request){
         $user = User::where('email', $request->email)->first();
 
-        if($user->password == $request->password){
+        if($user && $user->password == $request->password){
             $user->api_token = str_random(32);
 
             $user->save();

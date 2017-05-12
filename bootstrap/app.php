@@ -59,15 +59,17 @@ $app->singleton(
 |
 */
 
-/*
+$app->configure('cors');
+
 $app->middleware([
-   App\Http\Middleware\CorsMiddleware::class
- ]);
-*/
+    // ...
+    \Barryvdh\Cors\HandleCors::class,
+]);
+
+
 
  $app->routeMiddleware([
      'auth' => App\Http\Middleware\Authenticate::class,
-     'cors' => \palanik\lumen\Middleware\CorsMiddleware::class,
  ]);
 
 /*
@@ -83,6 +85,7 @@ $app->middleware([
 
 // $app->register(App\Providers\AppServiceProvider::class);
  $app->register(App\Providers\AuthServiceProvider::class);
+ $app->register(Barryvdh\Cors\ServiceProvider::class);
  //$app->register(App\Providers\CatchAllOptionsRequestsProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
 
