@@ -4,15 +4,15 @@
  * SOFT URL
  */
 
-$app->get('api/soft/{id}', 'SoftController@show');
+$app->get('soft/{id}', 'SoftController@show');
 
-$app->get('api/soft', 'SoftController@index');
+$app->get('soft', 'SoftController@index');
 
-$app->post('api/soft', 'SoftController@store');
+$app->post('soft', 'SoftController@store');
 
-$app->put('api/soft', 'SoftController@update');
+$app->put('soft', 'SoftController@update');
 
-$app->delete('api/soft/{id}', 'SoftController@destroy');
+$app->delete('soft/{id}', 'SoftController@destroy');
 
 
 /**
@@ -20,15 +20,15 @@ $app->delete('api/soft/{id}', 'SoftController@destroy');
  */
 
 
-$app->get('api/alcohol/{id}', 'AlcoholController@show');
+$app->get('alcohol/{id}', 'AlcoholController@show');
 
-$app->get('api/alcohol', 'AlcoholController@index');
+$app->get('alcohol', 'AlcoholController@index');
 
-$app->post('api/alcohol', 'AlcoholController@store');
+$app->post('alcohol', 'AlcoholController@store');
 
-$app->put('api/alcohol', 'AlcoholController@update');
+$app->put('alcohol', 'AlcoholController@update');
 
-$app->delete('api/alcohol/{id}', 'AlcoholController@destroy');
+$app->delete('alcohol/{id}', 'AlcoholController@destroy');
 
 
 /**
@@ -37,15 +37,15 @@ $app->delete('api/alcohol/{id}', 'AlcoholController@destroy');
 
 
 
-$app->get('api/extra/{id}', 'ExtraController@show');
+$app->get('extra/{id}', 'ExtraController@show');
 
-$app->get('api/extra', 'ExtraController@index');
+$app->get('extra', 'ExtraController@index');
 
-$app->post('api/extra', 'ExtraController@store');
+$app->post('extra', 'ExtraController@store');
 
-$app->put('api/extra', 'ExtraController@update');
+$app->put('extra', 'ExtraController@update');
 
-$app->delete('api/extra/{id}', 'ExtraController@destroy');
+$app->delete('extra/{id}', 'ExtraController@destroy');
 
 
 /**
@@ -53,14 +53,14 @@ $app->delete('api/extra/{id}', 'ExtraController@destroy');
  */
 
 
-$app->get('api/user/{id}', 'UserController@show');
+$app->get('user/{id}', 'UserController@show');
 
-$app->get('api/user', 'UserController@index');
+$app->get('user', 'UserController@index');
 
-$app->post('api/login', 'UserController@login');
+$app->post('login', 'UserController@login');
 
-$app->post('api/user', 'UserController@store');
+$app->post('user', 'UserController@store');
 
-$app->put('api/user', 'UserController@update');
+$app->put('user', 'UserController@update');
 
-$app->delete('api/user/{id}', 'UserController@destroy');
+$app->delete('user/{id}', 'UserController@destroy');
