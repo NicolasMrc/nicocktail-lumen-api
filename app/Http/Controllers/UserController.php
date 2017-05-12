@@ -78,7 +78,7 @@ class UserController extends Controller
 
             return new JsonResponse($user);
         } else {
-            return new JsonResponse(null);
+            return new JsonResponse(null, 204);
         }
     }
 }
