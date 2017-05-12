@@ -67,6 +67,7 @@ $app->middleware([
 
  $app->routeMiddleware([
      'auth' => App\Http\Middleware\Authenticate::class,
+     'cors' => \palanik\lumen\Middleware\CorsMiddleware::class,
  ]);
 
 /*
