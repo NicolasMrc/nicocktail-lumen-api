@@ -53,14 +53,14 @@ $app->delete('extra/{id}', 'ExtraController@destroy');
  */
 
 
-$app->get('user/{id}', 'UserController@show');
+$app->get('user/{id}',['middleware' => ['cors']], 'UserController@show');
 
-$app->get('user', 'UserController@index');
+$app->get('user',['middleware' => ['cors']], 'UserController@index');
 
-$app->post('login', 'UserController@login');
+$app->post('login',['middleware' => ['cors']], 'UserController@login');
 
-$app->post('user', 'UserController@store');
+$app->post('user',['middleware' => ['cors']], 'UserController@store');
 
-$app->put('user', 'UserController@update');
+$app->put('user',['middleware' => ['cors']], 'UserController@update');
 
-$app->delete('user/{id}', 'UserController@destroy');
+$app->delete('user/{id}',['middleware' => ['cors']], 'UserController@destroy');
