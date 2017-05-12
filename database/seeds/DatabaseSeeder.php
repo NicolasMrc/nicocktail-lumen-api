@@ -15,5 +15,6 @@ class DatabaseSeeder extends Seeder
         $this->call('SoftTableSeeder');
         $this->call('ExtraTableSeeder');
         $this->call('UserTableSeeder');
+        $this->call('BundleTableSeeder');
     }
 }

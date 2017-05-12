@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSoftTable extends Migration
+class CreateBundleSoftTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,14 +14,16 @@ class CreateSoftTable extends Migration
     public function up()
     {
         Schema::dropIfExists('bundle_soft');
-        Schema::dropIfExists('soft');
 
-
-        Schema::create('soft', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->string('type');
+        Schema::create('bundle_soft', function (Blueprint $table) {
+            $table->integer('bundle_id')->unsigned()->nullable();
+            $table->integer('soft_id')->unsigned()->nullable();
             $table->timestamps();
+        });
+
+        Schema::table('bundle_soft', function($table) {
+            $table->foreign('bundle_id')->references('id')->on('bundle');
+            $table->foreign('soft_id')->references('id')->on('soft');
         });
     }
 

@@ -56,7 +56,6 @@ class UserController extends Controller
         $user->firstname = $request->firstname;
         $user->lastname = $request->lastname;
         $user->email = $request->email;
-        $user->password = $request->password;
 
         $user->save();
 
@@ -72,7 +71,10 @@ class UserController extends Controller
         $user = User::where('email', $request->email)->first();
 
         if($user && $user->password == $request->password){
-            $user->api_token = str_random(32);
+
+            if($user->role == 'admin'){
+                $user->api_token = str_random(32);
+            }
 
             $user->save();
 

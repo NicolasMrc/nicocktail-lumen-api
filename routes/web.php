@@ -1,5 +1,21 @@
 <?php
 
+
+/**
+ * BUNDLE URL
+ */
+
+$app->get('bundle/{id}', 'BundleController@show');
+
+$app->get('bundle', 'BundleController@index');
+
+$app->post('bundle', 'BundleController@store');
+
+$app->put('bundle', 'BundleController@update');
+
+$app->delete('bundle/{id}', 'BundleController@destroy');
+
+
 /**
  * SOFT URL
  */
@@ -13,6 +29,8 @@ $app->post('soft', 'SoftController@store');
 $app->put('soft', 'SoftController@update');
 
 $app->delete('soft/{id}', 'SoftController@destroy');
+
+
 
 
 /**

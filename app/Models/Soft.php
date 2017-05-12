@@ -12,4 +12,9 @@ use Illuminate\Database\Eloquent\Model;
 class Soft extends Model
 {
     protected $table = 'soft';
+
+    public function bundles()
+    {
+        return $this->belongsToMany('App\Models\Bundles');
+    }
 }

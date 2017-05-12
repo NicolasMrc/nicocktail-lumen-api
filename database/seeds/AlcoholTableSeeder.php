@@ -42,6 +42,11 @@ class AlcoholTableSeeder extends Seeder
         ]);
 
         DB::table('alcohol')->insert([
+            'name' => 'Curaçao',
+            'degree' => '40',
+        ]);
+
+        DB::table('alcohol')->insert([
             'name' => 'Amarretto',
             'degree' => '40',
         ]);

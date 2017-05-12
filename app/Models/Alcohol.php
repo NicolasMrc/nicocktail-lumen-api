@@ -12,4 +12,9 @@ use Illuminate\Database\Eloquent\Model;
 class Alcohol extends Model
 {
     protected $table = 'alcohol';
+
+    public function bundles()
+    {
+        return $this->belongsToMany('App\Models\Bundles');
+    }
 }
