@@ -20,7 +20,7 @@ class AlcoholController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth', ['only' => ['update', 'destroy', 'store']]);
+        //$this->middleware('auth', ['only' => ['update', 'destroy', 'store']]);
 
     }
 

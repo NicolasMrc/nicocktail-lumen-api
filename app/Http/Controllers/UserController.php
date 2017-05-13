@@ -21,7 +21,7 @@ class UserController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth', ['only' => ['show', 'index', 'destroy', 'update']]);
+        //$this->middleware('auth', ['only' => ['show', 'index', 'destroy', 'update']]);
     }
 
     public function show($id)
