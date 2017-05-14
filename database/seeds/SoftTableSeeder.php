@@ -25,6 +25,10 @@ class SoftTableSeeder extends Seeder
             'type' => 'Syrup',
         ]);
         DB::table('soft')->insert([
+            'name' => 'Sugar Syrup',
+            'type' => 'Syrup',
+        ]);
+        DB::table('soft')->insert([
             'name' => 'Sprite',
             'type' => 'Soda',
         ]);
@@ -37,12 +41,12 @@ class SoftTableSeeder extends Seeder
             'type' => 'Juce',
         ]);
         DB::table('soft')->insert([
-            'name' => 'Lime Juce',
-            'type' => 'Juce',
+            'name' => 'Lime Juice',
+            'type' => 'Juice',
         ]);
         DB::table('soft')->insert([
-            'name' => 'Cranberries Juce',
-            'type' => 'Juce',
+            'name' => 'Cranberries Juice',
+            'type' => 'Juice',
         ]);
     }
 }

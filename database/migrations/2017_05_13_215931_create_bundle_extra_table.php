@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateExtraTable extends Migration
+class CreateBundleExtraTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,12 +14,16 @@ class CreateExtraTable extends Migration
     public function up()
     {
         Schema::dropIfExists('bundle_extra');
-        Schema::dropIfExists('extra');
 
-        Schema::create('extra', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
+        Schema::create('bundle_extra', function (Blueprint $table) {
+            $table->integer('bundle_id')->unsigned()->nullable();
+            $table->integer('extra_id')->unsigned()->nullable();
             $table->timestamps();
+        });
+
+        Schema::table('bundle_extra', function($table) {
+            $table->foreign('bundle_id')->references('id')->on('bundle');
+            $table->foreign('extra_id')->references('id')->on('extra');
         });
     }
 

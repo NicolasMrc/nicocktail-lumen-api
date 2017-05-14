@@ -8,7 +8,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Alcohol;
 use App\Models\Bundle;
+use App\Models\Extra;
+use App\Models\Soft;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -29,8 +32,8 @@ class BundleController extends Controller
 
     public function index()
     {
-        $bundle = Bundle::all();
-        return new JsonResponse($bundle);
+        $bundles = Bundle::all();
+        return new JsonResponse($bundles);
     }
 
     public function store(Request $request){
@@ -39,6 +42,22 @@ class BundleController extends Controller
 
         $bundle->name = $request->name;
         $bundle->description = $request->description;
+        $bundle->save();
+
+        foreach ($request->softs as $soft){
+            $newSoft = Soft::where('id', $soft['id'])->first();
+            $bundle->softs()->syncWithoutDetaching([$newSoft->id]);
+        }
+
+        foreach ($request->alcohols as $alcohol){
+            $newAlcohol = Alcohol::where('id', $alcohol['id'])->first();
+            $bundle->alcohols()->syncWithoutDetaching([$newAlcohol->id]);
+        }
+
+        foreach ($request->extras as $extra){
+            $newExtra = Extra::where('id', $extra['id'])->first();
+            $bundle->extras()->syncWithoutDetaching([$newExtra->id]);
+        }
 
         $bundle->save();
 
@@ -50,6 +69,30 @@ class BundleController extends Controller
 
         $bundle->name = $request->name;
         $bundle->description = $request->description;
+
+        $softsIds[] = [];
+        $alcoholsIds[] = [];
+        $extrasIds[] = [];
+
+        array_pop($softsIds);
+        array_pop($alcoholsIds);
+        array_pop($extrasIds);
+
+        foreach ($request->softs as $soft){
+            array_push($softsIds, $soft['id']);
+        }
+
+        foreach ($request->alcohols as $alcohol){
+            array_push($alcoholsIds, $alcohol['id']);
+        }
+
+        foreach ($request->extras as $extra){
+            array_push($extrasIds, $extra['id']);
+        }
+
+        $bundle->softs()->sync($softsIds);
+        $bundle->alcohols()->sync($alcoholsIds);
+        $bundle->extras()->sync($extrasIds);
 
         $bundle->save();
 

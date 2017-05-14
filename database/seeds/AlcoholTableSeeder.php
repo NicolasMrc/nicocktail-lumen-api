@@ -38,17 +38,22 @@ class AlcoholTableSeeder extends Seeder
 
         DB::table('alcohol')->insert([
             'name' => 'Absinthe',
-            'degree' => '40',
+            'degree' => '69',
         ]);
 
         DB::table('alcohol')->insert([
             'name' => 'Curaçao',
-            'degree' => '40',
+            'degree' => '17',
         ]);
 
         DB::table('alcohol')->insert([
             'name' => 'Amarretto',
             'degree' => '40',
+        ]);
+
+        DB::table('alcohol')->insert([
+            'name' => 'Triple Sec',
+            'degree' => '35',
         ]);
 
     }
