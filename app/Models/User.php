@@ -12,6 +12,17 @@ use Illuminate\Database\Eloquent\Model;
 class User extends Model
 {
     protected $table = 'user';
+    protected $with = array('cart', 'wishlist');
 
     protected $hidden = ['password'];
+
+    public function cart()
+    {
+        return $this->belongsToMany('App\Models\Bundle', 'cart');
+    }
+
+    public function wishlist()
+    {
+        return $this->belongsToMany('App\Models\Bundle', 'wishlist');
+    }
 }

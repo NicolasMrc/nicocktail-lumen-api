@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Bundle;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class UserTableSeeder extends Seeder
@@ -35,7 +37,7 @@ class UserTableSeeder extends Seeder
             'role' => 'admin',
             'api_token' => str_random(32),
         ]);
-        DB::table('user')->insert([
+        $user = User::create([
             'firstname' => 'Nicolas',
             'lastname' => 'Mercier',
             'email' => 'nyckoo@live.fr',
@@ -43,5 +45,7 @@ class UserTableSeeder extends Seeder
             'role' => 'user',
             'api_token' => '',
         ]);
+
+        $user->cart()->save(Bundle::where('name', 'Blue Lagoon')->first());
     }
 }

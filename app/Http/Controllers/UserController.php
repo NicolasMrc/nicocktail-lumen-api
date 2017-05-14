@@ -27,6 +27,8 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::where('id', $id)->first();
+
+
         return new JsonResponse($user);
     }
 
@@ -57,6 +59,23 @@ class UserController extends Controller
         $user->lastname = $request->lastname;
         $user->email = $request->email;
 
+        $cart[] = [];
+        $wishlist[] = [];
+
+        array_pop($cart);
+        array_pop($wishlist);
+
+        foreach ($request->cart as $bundle){
+            array_push($cart, $bundle['id']);
+        }
+
+        foreach ($request->wishlist as $bundle){
+            array_push($wishlist, $bundle['id']);
+        }
+
+        $user->cart()->sync($cart);
+        $user->wishlist()->sync($wishlist);
+
         $user->save();
 
         return new JsonResponse($user);
@@ -74,9 +93,8 @@ class UserController extends Controller
 
             if($user->role == 'admin'){
                 $user->api_token = str_random(32);
+                $user->save();
             }
-
-            $user->save();
 
             return new JsonResponse($user);
         } else {

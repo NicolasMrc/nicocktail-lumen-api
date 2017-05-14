@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
         $this->call('AlcoholTableSeeder');
         $this->call('SoftTableSeeder');
         $this->call('ExtraTableSeeder');
-        $this->call('UserTableSeeder');
         $this->call('BundleTableSeeder');
+        $this->call('UserTableSeeder');
     }
 }

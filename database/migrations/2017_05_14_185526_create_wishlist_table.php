@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUserTable extends Migration
+class CreateWishlistTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,21 +13,20 @@ class CreateUserTable extends Migration
      */
     public function up()
     {
-        Schema::dropIfExists('cart');
         Schema::dropIfExists('wishlist');
-        Schema::dropIfExists('user');
 
-        Schema::create('user', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('firstname');
-            $table->string('lastname');
-            $table->string('email');
-            $table->string('password');
-            $table->string('role');
-            $table->string('api_token');
+        Schema::create('wishlist', function (Blueprint $table) {
+            $table->integer('bundle_id')->unsigned()->nullable();
+            $table->integer('user_id')->unsigned()->nullable();
             $table->timestamps();
         });
+
+        Schema::table('wishlist', function($table) {
+            $table->foreign('bundle_id')->references('id')->on('bundle');
+            $table->foreign('user_id')->references('id')->on('user');
+        });
     }
+
 
     /**
      * Reverse the migrations.
