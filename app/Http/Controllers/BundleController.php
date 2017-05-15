@@ -42,6 +42,7 @@ class BundleController extends Controller
 
         $bundle->name = $request->name;
         $bundle->description = $request->description;
+        $bundle->image = $request->image;
         $bundle->save();
 
         foreach ($request->softs as $soft){
@@ -69,6 +70,7 @@ class BundleController extends Controller
 
         $bundle->name = $request->name;
         $bundle->description = $request->description;
+        $bundle->image = $request->image;
 
         $softsIds[] = [];
         $alcoholsIds[] = [];

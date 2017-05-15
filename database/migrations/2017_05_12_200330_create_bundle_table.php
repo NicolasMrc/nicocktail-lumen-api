@@ -19,6 +19,7 @@ class CreateBundleTable extends Migration
             $table->increments('id');
             $table->string('name')->nullable(true);
             $table->string('description')->nullable(true);
+            $table->string('image')->nullable(true);
             $table->timestamps();
         });
 

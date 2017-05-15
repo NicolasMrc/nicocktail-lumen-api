@@ -13,7 +13,7 @@ class Bundle extends Model
 {
     protected $table = 'bundle';
     protected $with = array('alcohols', 'softs', 'extras');
-    protected $fillable = ['name', 'description'];
+    protected $fillable = ['name', 'description', 'image'];
 
     public function softs()
     {
