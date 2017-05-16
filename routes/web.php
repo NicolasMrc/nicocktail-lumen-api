@@ -31,6 +31,20 @@ $app->put('soft', 'SoftController@update');
 $app->delete('soft/{id}', 'SoftController@destroy');
 
 
+/**
+ * ORDER URL
+ */
+
+$app->get('order/{id}', 'OrderController@show');
+
+$app->get('order', 'OrderController@index');
+
+$app->post('order', 'OrderController@store');
+
+$app->put('order', 'OrderController@update');
+
+$app->delete('order/{id}', 'OrderController@destroy');
+
 
 
 /**

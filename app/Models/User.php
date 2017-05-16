@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Model;
 class User extends Model
 {
     protected $table = 'user';
-    protected $with = array('cart', 'wishlist');
+    protected $with = array('cart', 'wishlist', 'address');
 
     protected $hidden = ['password'];
 
@@ -24,5 +24,10 @@ class User extends Model
     public function wishlist()
     {
         return $this->belongsToMany('App\Models\Bundle', 'wishlist');
+    }
+
+    public function address()
+    {
+        return $this->hasOne('App\Models\Address');
     }
 }

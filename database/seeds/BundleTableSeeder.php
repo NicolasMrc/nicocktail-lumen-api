@@ -18,7 +18,9 @@ class BundleTableSeeder extends Seeder
         $bundle = Bundle::create([
             'name' => 'Blue Lagoon',
             'description' => 'Some blue lagoon description',
-            'image' => 'blue_lagoon.png'
+            'image' => 'blue_lagoon.png',
+            'price' => 35,
+            'discount' => 0,
         ]);
 
         $bundle->softs()->save(Soft::where('name', 'Lime Juice')->first());
@@ -29,7 +31,9 @@ class BundleTableSeeder extends Seeder
         $bundle = Bundle::create([
             'name' => 'Tequila Sunrise',
             'description' => 'Some Tequila Sunrise description',
-            'image' => 'tequila_sunrise.png'
+            'image' => 'tequila_sunrise.png',
+            'price' => 30,
+            'discount' => 0,
         ]);
 
         $bundle->softs()->save(Soft::where('name', 'Orange Juce')->first());
@@ -39,7 +43,9 @@ class BundleTableSeeder extends Seeder
         $bundle = Bundle::create([
             'name' => 'Mojito',
             'description' => 'Some Mojito description',
-            'image' => 'mojito.png'
+            'image' => 'mojito.png',
+            'price' => 40,
+            'discount' => 0,
         ]);
 
         $bundle->softs()->save(Soft::where('name', 'Perrier')->first());
@@ -53,7 +59,9 @@ class BundleTableSeeder extends Seeder
         $bundle = Bundle::create([
             'name' => 'Cosmopolitan',
             'description' => 'Some Cosmopolitan description',
-            'image' => 'cosmopolitan.png'
+            'image' => 'cosmopolitan.png',
+            'price' => 38,
+            'discount' => 0,
         ]);
 
         $bundle->softs()->save(Soft::where('name', 'Cranberries Juice')->first());

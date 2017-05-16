@@ -9,6 +9,8 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\Address;
+use App\Models\Order;
 use App\Models\Soft;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
@@ -55,9 +57,15 @@ class UserController extends Controller
     public function update(Request $request){
         $user = User::where('id', $request->id)->first();
 
-        $user->firstname = $request->firstname;
-        $user->lastname = $request->lastname;
-        $user->email = $request->email;
+        $user->firstname = $request->input('firstname');
+        $user->lastname = $request->input('lastname');
+        $user->email = $request->input('email');
+
+        if($user->address == null){
+            $user->address()->save(new Address());
+        }
+
+        $user->address()->update($request->input('address'));
 
         $cart[] = [];
         $wishlist[] = [];

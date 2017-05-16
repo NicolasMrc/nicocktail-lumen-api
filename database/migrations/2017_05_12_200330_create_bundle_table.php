@@ -20,6 +20,8 @@ class CreateBundleTable extends Migration
             $table->string('name')->nullable(true);
             $table->string('description')->nullable(true);
             $table->string('image')->nullable(true);
+            $table->float('price')->nullable(true);
+            $table->float('discount')->nullable(true);
             $table->timestamps();
         });
 
