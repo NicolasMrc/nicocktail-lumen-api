@@ -65,7 +65,9 @@ class UserController extends Controller
             $user->address()->save(new Address());
         }
 
-        $user->address()->update($request->input('address'));
+        if($request->input('address') != null){
+            $user->address()->update($request->input('address'));
+        }
 
         $cart[] = [];
         $wishlist[] = [];

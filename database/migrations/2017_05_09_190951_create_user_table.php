@@ -15,6 +15,7 @@ class CreateUserTable extends Migration
     {
         Schema::dropIfExists('cart');
         Schema::dropIfExists('wishlist');
+        Schema::dropIfExists('bundle_order');
         Schema::dropIfExists('order');
         Schema::dropIfExists('address');
         Schema::dropIfExists('user');

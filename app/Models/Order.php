@@ -12,22 +12,16 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
     protected $table = 'order';
-    protected $with = array('billingAddress', 'shippingAddress');
+    protected $with = ['bundles'];
+    protected $fillable = ['billing_road', 'billing_city', 'billing_country', 'billing_province', 'billing_zipcode'];
 
     public function user()
     {
         return $this->belongsTo('App\Models\User');
     }
 
-    public function shippingAddress()
+    public function bundles()
     {
-        return $this->hasOne('App\Models\Address');
+        return $this->belongsToMany('App\Models\Bundle');
     }
-
-    public function billingAddress()
-    {
-        return $this->hasOne('App\Models\Address');
-    }
-
-
 }

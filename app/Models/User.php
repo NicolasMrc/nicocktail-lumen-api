@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Model;
 class User extends Model
 {
     protected $table = 'user';
-    protected $with = array('cart', 'wishlist', 'address');
+    protected $with = array('cart', 'wishlist', 'address', 'orders');
 
     protected $hidden = ['password'];
 
@@ -29,5 +29,10 @@ class User extends Model
     public function address()
     {
         return $this->hasOne('App\Models\Address');
+    }
+
+    public function orders()
+    {
+        return $this->hasMany('App\Models\Order');
     }
 }
