@@ -83,7 +83,8 @@ class UserController extends Controller
             array_push($wishlist, $bundle['id']);
         }
 
-        $user->cart()->sync($cart);
+        $user->cart()->detach();
+        $user->cart()->attach($cart);
         $user->wishlist()->sync($wishlist);
 
         $user->save();

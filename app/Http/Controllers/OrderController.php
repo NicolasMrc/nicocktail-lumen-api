@@ -69,7 +69,7 @@ class OrderController extends Controller
 
         $order->save();
         $order->user()->associate($user);
-        $order->bundles()->sync($bundles);
+        $order->bundles()->attach($bundles);
         $order->save();
         $order->load(['bundles']);
 
