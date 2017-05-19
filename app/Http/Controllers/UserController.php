@@ -16,6 +16,7 @@ use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Hash;
 
 
 class UserController extends Controller
@@ -47,7 +48,7 @@ class UserController extends Controller
         $user->firstname = $request->firstname;
         $user->lastname = $request->lastname;
         $user->email = $request->email;
-        $user->password = $request->password;
+        $user->password = Hash::make($request->password);
 
         $user->save();
 
@@ -100,7 +101,7 @@ class UserController extends Controller
     public function login(Request $request){
         $user = User::where('email', $request->email)->first();
 
-        if($user && $user->password == $request->password){
+        if($user && Hash::check($request->password, $user->password)){
 
             if($user->role == 'admin'){
                 $user->api_token = str_random(32);
