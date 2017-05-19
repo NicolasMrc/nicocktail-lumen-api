@@ -15,7 +15,7 @@ class ExtraTableSeeder extends Seeder
             'name' => 'Sugar',
         ]);
         DB::table('extra')->insert([
-            'name' => 'Lime',
+            'name' => 'Limes',
         ]);
         DB::table('extra')->insert([
             'name' => 'Fresh Mint',
